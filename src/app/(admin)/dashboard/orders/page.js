@@ -2,6 +2,7 @@
 
   import { useState, useEffect } from 'react'
   import { createClient } from '@/lib/supabase/client'
+  import { formatPrice } from '@/lib/formatPrice'
 
   const STATUSES = ['Pending', 'Preparing', 'Ready',
   'Completed', 'Cancelled']
@@ -119,7 +120,7 @@
 
   {PAYMENT_LABEL[order.payment_method] ??
   order.payment_method} ·{' '}
-                      ₱{order.total_price}
+                      ₱{formatPrice(order.total_price)}
                     </p>
                   </div>
                   <select

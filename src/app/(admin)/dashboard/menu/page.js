@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import { formatPrice } from '@/lib/formatPrice'
 
 export default async function AdminMenuPage() {
   const supabase = await createClient()
@@ -42,7 +43,7 @@ export default async function AdminMenuPage() {
               <tr key={item.id} className="hover:bg-stone-50">
                 <td className="px-4 py-3 font-medium text-stone-900">{item.name}</td>
                 <td className="px-4 py-3 text-stone-600">{item.categories?.name ?? 'Uncategorized'}</td>
-                <td className="px-4 py-3 text-stone-600">₱{item.price}</td>
+                <td className="px-4 py-3 text-stone-600">{formatPrice(item.price)}</td>
                 <td className="px-4 py-3">
                   <span
                     className={`px-2 py-1 rounded-full text-xs font-medium ${
